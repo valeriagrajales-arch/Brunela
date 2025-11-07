@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - Brunela</title>
+    <link rel="icon" type="image/png" href="img/brunela.png">
+    <link rel="stylesheet" href="merch-detail.css">
+    <link rel="stylesheet" href="user-session.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="img/texto brunelacolor.png" alt="Brunela" class="logo-image">
+                    </a>
+                </div>
+                <div class="search-section">
+                    <div class="search-bar"></div>
+                    <img src="img/lupa.png" alt="Buscar" class="search-icon">
+                    <img src="img/is.png" alt="Iniciar Sesión" class="login-icon" onclick="window.location.href='Iniciar-Sesion.html'">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Overlay -->
+    <div class="dark-overlay" id="darkOverlay"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-content">
+            <div class="menu-header">
+                <div class="menu-hamburger">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="menu-divider"></div>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='Nosotros.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">NOSOTROS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Menú.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">MENÚ</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Personalizada.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">PERSONALIZADA</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Otros-Productos.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">OTROS PRODUCTOS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Iniciar-Sesion.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">INICIAR SESIÓN</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='index.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">HOGAR</span>
+                </div>
+            </div>
+            
+            <div class="menu-footer">
+                <img src="img/bnegra.png" alt="Brunela" class="menu-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="merch-detail-container">
+            <!-- Left Section - Image -->
+            <div class="merch-image-section">
+                <div class="main-image">
+                    <img src="" alt="" id="merch-detail-image" class="merch-detail-img">
+                </div>
+                <div class="image-caption" id="image-caption">
+                    Producto Brunela
+                </div>
+            </div>
+
+            <!-- Right Section - Details -->
+            <div class="merch-details-section">
+                <div class="merch-info">
+                    <h1 class="merch-title" id="merch-title">Producto Brunela</h1>
+                    
+                    <div class="merch-price">
+                        <span id="merch-price">$25.000</span>
+                    </div>
+                    
+                    <p class="merch-description" id="merch-description">
+                        Un producto increíble de Brunela, diseñado con amor y dedicación para nuestros clientes más especiales.
+                    </p>
+
+                    <div class="action-icons">
+                        <div class="action-buttons">
+                            <button class="action-button cart-button">🛒</button>
+                            <button class="action-button whatsapp-button">📱</button>
+                        </div>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="tags-section">
+                        <h3>Características</h3>
+                        <div class="tags-container" id="tags-container">
+                            <!-- Tags will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Left Side - Brand and Social -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/bnegra.png" alt="Brunela Logo" class="logo-b">
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/wha.png" alt="WhatsApp"></a>
+                    <a href="#" class="social-icon"><img src="img/tik.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="img/pin.png" alt="Pinterest"></a>
+                </div>
+                
+                <div class="footer-email">
+                    <p>brunela@cookie.co</p>
+                </div>
+            </div>
+            
+            <!-- Center - Cookies -->
+            <div class="footer-center">
+                <img src="img/footer.png" alt="Cookies" class="footer-cookies">
+            </div>
+            
+            <!-- Right Side - Location and Map -->
+            <div class="footer-right">
+                <div class="footer-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.5!2d-95.1!3d29.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDM2JzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                        width="200" 
+                        height="150" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="footer-address">
+                    <p>1601 E NASA Pkwy, Houston, TX 77058, EE. UU.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="user-session.js"></script>
+    <script src="merch-detail.js"></script>
+</body>
+</html>

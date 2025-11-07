@@ -1,0 +1,414 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #9d5353;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Pattern */
+.background-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/fondois.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Registration Container */
+.registration-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 20px;
+}
+
+/* Registration Form - Frosted Glass Effect */
+.registration-form {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow Effect */
+.registration-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 25px;
+    z-index: -1;
+}
+
+/* User Icon */
+.user-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Form Title */
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #edccb2;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Input Group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input-field::placeholder {
+    color: #666;
+    font-weight: 400;
+}
+
+.input-field:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Action Group */
+.action-group {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+/* Registration Buttons Container */
+.registration-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Create Account Button */
+.create-account-btn {
+    background: #7d1b26;
+    color: white;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(125, 27, 38, 0.3);
+    width: 100%;
+}
+
+.create-account-btn:hover {
+    background: #9d5353;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(125, 27, 38, 0.4);
+}
+
+.create-account-btn:active {
+    transform: translateY(0);
+}
+
+/* Back to Login Button */
+.back-to-login-btn {
+    background: transparent;
+    color: #edccb2;
+    border: 2px solid #edccb2;
+    padding: 16px 30px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.back-to-login-btn:hover {
+    background: #edccb2;
+    color: #7d1b26;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(237, 204, 178, 0.3);
+}
+
+.back-to-login-btn:active {
+    transform: translateY(0);
+}
+
+/* Social Registration */
+.social-registration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-text {
+    color: #edccb2;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Social Login */
+.social-login {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon.apple {
+    background: #000000;
+    color: white;
+}
+
+.social-icon.google {
+    background: white;
+    color: #333;
+}
+
+.social-icon.facebook {
+    background: #1877F2;
+    color: white;
+}
+
+.social-icon.microsoft {
+    background: white;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .registration-form {
+        padding: 40px 30px;
+        margin: 20px;
+        max-width: 400px;
+    }
+    
+    .user-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .form-title {
+        font-size: 1.8rem;
+    }
+    
+    .input-field {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+    
+    .create-account-btn, .back-to-login-btn {
+        padding: 16px 25px;
+        font-size: 15px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-form {
+        padding: 35px 25px;
+        margin: 15px;
+        max-width: 350px;
+    }
+    
+    .user-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .form-title {
+        font-size: 1.6rem;
+    }
+    
+    .input-field {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    .create-account-btn, .back-to-login-btn {
+        padding: 14px 20px;
+        font-size: 14px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.registration-form {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Subtle floating animation for background pattern */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.background-pattern {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Shake animation for invalid registration */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.registration-form.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Field validation styles */
+.input-field.error {
+    border: 2px solid #f44336;
+    background: rgba(244, 67, 54, 0.1);
+}
+
+.input-field.success {
+    border: 2px solid #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.field-error {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+    display: none;
+}
+
+.field-error.show {
+    display: block;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,623 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5e6d3;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header Styles */
+.header {
+    position: relative;
+    z-index: 10;
+}
+
+.navbar {
+    background: #f5e6d3;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 15px 10px 15px 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    gap: 60px;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    justify-self: start;
+    margin-left: 5px;
+    gap: 4px;
+}
+
+.menu-toggle:hover {
+    opacity: 0.7;
+}
+
+.hamburger {
+    width: 25px;
+    height: 3px;
+    background: #7d1b26;
+    transition: all 0.3s ease;
+    display: block;
+    border-radius: 2px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 3;
+}
+
+.logo-link {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.search-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    grid-column: 5;
+    justify-self: end;
+    margin-right: 5px;
+}
+
+.search-bar {
+    width: 200px;
+    height: 30px;
+    background: #edccb2;
+    border-radius: 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: brightness(0) invert(0);
+}
+
+.login-icon {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    filter: brightness(0) invert(0);
+}
+
+.logo-image {
+    height: 120px;
+    width: auto;
+    filter: none;
+}
+
+/* Dark Overlay */
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.dark-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    height: 100vh;
+    background: #edccb2;
+    z-index: 1000;
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.sidebar-menu.active {
+    left: 0;
+}
+
+.sidebar-content {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-header {
+    margin-bottom: 30px;
+}
+
+.menu-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.menu-hamburger .hamburger {
+    width: 25px;
+    height: 3px;
+    background: #000000;
+    border-radius: 2px;
+}
+
+.menu-divider {
+    width: 100%;
+    height: 1px;
+    background: #000000;
+    border: 1px dashed #000000;
+    position: relative;
+}
+
+.menu-divider::before,
+.menu-divider::after {
+    content: '▶';
+    position: absolute;
+    top: -8px;
+    color: #000000;
+    font-size: 12px;
+}
+
+.menu-divider::before {
+    left: 0;
+}
+
+.menu-divider::after {
+    right: 0;
+}
+
+.menu-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    background: rgba(212, 161, 122, 0.5);
+    transform: translateX(5px);
+}
+
+.menu-arrow {
+    color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu-text-item {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.menu-logo {
+    height: 250px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Main Content */
+.main-content {
+    padding-top: 100px;
+    min-height: 100vh;
+    background: #f5e6d3;
+}
+
+.merch-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Left Section - Image */
+.merch-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.main-image {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(125, 27, 38, 0.2);
+    background: #edccb2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.merch-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.merch-detail-img:hover {
+    transform: scale(1.05);
+}
+
+.image-caption {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7d1b26;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* Right Section - Details */
+.merch-details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.merch-info {
+    background: linear-gradient(135deg, #7d1b26 0%, #9d5353 100%);
+    border-radius: 20px;
+    padding: 40px;
+    color: #edccb2;
+    box-shadow: 0 20px 40px rgba(125, 27, 38, 0.3);
+}
+
+.merch-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #edccb2;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.merch-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #f5e6d3;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #edccb2 0%, #f5e6d3 100%);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.merch-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #f5e6d3;
+    margin-bottom: 30px;
+}
+
+.action-icons {
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.action-button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #edccb2;
+    color: #7d1b26;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.action-button:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    background: #f5e6d3;
+}
+
+.divider {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #edccb2, transparent);
+    margin: 30px 0;
+}
+
+.tags-section h3 {
+    font-size: 1.5rem;
+    color: #edccb2;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.tag {
+    background: #edccb2;
+    color: #7d1b26;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: #f5e6d3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(237, 204, 178, 0.3);
+}
+
+/* Footer */
+.footer {
+    background: #7d1b26;
+    padding: 80px 60px 60px 60px;
+    margin-top: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Left Section - Brand and Social */
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    flex: 1;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-b {
+    width: 150px;
+    height: 150px;
+    filter: none;
+}
+
+.social-icons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+
+.social-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(0);
+}
+
+.social-icon:hover {
+    background: white;
+}
+
+.social-icon:hover img {
+    filter: brightness(0) invert(0);
+}
+
+.footer-email {
+    text-align: center;
+}
+
+.footer-email p {
+    color: white;
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Center Section - Cookies */
+.footer-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.footer-cookies {
+    width: 250px;
+    height: auto;
+    object-fit: contain;
+    transform: translateY(20px);
+}
+
+/* Right Section - Location and Map */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+}
+
+.footer-map {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.footer-map iframe {
+    width: 300px;
+    height: 200px;
+    border: none;
+    border-radius: 10px;
+}
+
+.footer-address {
+    text-align: center;
+}
+
+.footer-address p {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .merch-detail-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 20px 15px;
+    }
+    
+    .main-image {
+        height: 300px;
+    }
+    
+    .merch-title {
+        font-size: 2.5rem;
+    }
+    
+    .merch-price {
+        font-size: 2rem;
+    }
+    
+    .merch-description {
+        font-size: 1.1rem;
+    }
+    
+    .merch-info {
+        padding: 30px 25px;
+    }
+    
+    .footer {
+        padding: 50px 25px 40px 25px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .footer-left {
+        order: 1;
+    }
+    
+    .footer-center {
+        order: 2;
+    }
+    
+    .footer-right {
+        order: 3;
+    }
+    
+    .footer-cookies {
+        width: 180px;
+        transform: translateY(10px);
+    }
+    
+    .footer-map iframe {
+        width: 280px;
+        height: 200px;
+    }
+}
+

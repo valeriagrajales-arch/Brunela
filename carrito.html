@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Brunela</title>
+    <link rel="icon" type="image/png" href="img/brunela.png">
+    <link rel="stylesheet" href="carrito.css">
+    <link rel="stylesheet" href="user-session.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos críticos para asegurar que todo funcione */
+        body {
+            font-family: 'Inter', sans-serif !important;
+            background: #edccb2 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .navbar {
+            background: rgba(237, 204, 178, 0.95) !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 100 !important;
+            height: 80px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .nav {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr auto 1fr !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            gap: 60px !important;
+        }
+        
+        .search-icon, .cart-icon, .login-icon {
+            width: 30px !important;
+            height: 30px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            opacity: 0.8 !important;
+        }
+        
+        .search-icon:hover, .cart-icon:hover, .login-icon:hover {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .cart-icon.active {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+        }
+        
+        .main-content {
+            padding-top: 100px !important;
+            min-height: calc(100vh - 200px) !important;
+        }
+        
+        .footer {
+            background: #7d1b26 !important;
+            padding: 40px 0 !important;
+            margin-top: 60px !important;
+        }
+        
+        .footer-content {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr !important;
+            gap: 40px !important;
+            align-items: center !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="img/texto brunelacolor.png" alt="Brunela" class="logo-image">
+                    </a>
+                </div>
+                <div class="search-section">
+                    <div class="search-bar"></div>
+                    <img src="img/lupa.png" alt="Buscar" class="search-icon">
+                    <img src="img/carrito.png" alt="Carrito de Compras" class="cart-icon active" onclick="window.location.href='carrito.html'" title="Ver carrito">
+                    <img src="img/is.png" alt="Iniciar Sesión" class="login-icon" onclick="window.location.href='Iniciar-Sesion.html'">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Overlay -->
+    <div class="dark-overlay" id="darkOverlay"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-content">
+            <div class="menu-header">
+                <div class="menu-hamburger">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="menu-divider"></div>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='Nosotros.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">NOSOTROS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Menú.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">MENÚ</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Personalizada.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">PERSONALIZADA</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Otros-Productos.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">OTROS PRODUCTOS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Iniciar-Sesion.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">INICIAR SESIÓN</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='index.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">HOGAR</span>
+                </div>
+            </div>
+            
+            <div class="menu-footer">
+                <img src="img/bnegra.png" alt="Brunela" class="menu-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h1 class="cart-title">Tu Carrito de Compras</h1>
+                <p class="cart-subtitle">Revisa tus productos antes de finalizar tu pedido</p>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-content">
+                <div class="cart-items-section">
+                    <div class="cart-items" id="cartItems">
+                        <!-- Los elementos del carrito se cargarán dinámicamente aquí -->
+                        <div class="empty-cart" id="emptyCart">
+                            <div class="empty-cart-icon">
+                                <img src="img/carrito.png" alt="Carrito vacío">
+                            </div>
+                            <h3>Tu carrito está vacío</h3>
+                            <p>¡Agrega algunos productos deliciosos de Brunela!</p>
+                            <button class="continue-shopping-btn" onclick="window.location.href='Menú.html'">
+                                Continuar Comprando
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Resumen del Pedido</h3>
+                        
+                        <div class="summary-details">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Envío:</span>
+                                <span id="shipping">$5.000</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Total:</span>
+                                <span id="total">$5.000</span>
+                            </div>
+                        </div>
+
+                        <div class="checkout-section">
+                            <button class="checkout-btn" id="checkoutBtn" disabled>
+                                Proceder al Pago
+                            </button>
+                            <p class="checkout-note">
+                                * Los precios pueden variar según la disponibilidad
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Left Side - Brand and Social -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/bnegra.png" alt="Brunela Logo" class="logo-b">
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/wha.png" alt="WhatsApp"></a>
+                    <a href="#" class="social-icon"><img src="img/tik.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="img/pin.png" alt="Pinterest"></a>
+                </div>
+                
+                <div class="footer-email">
+                    <p>brunela@cookie.co</p>
+                </div>
+            </div>
+            
+            <!-- Center - Cookies -->
+            <div class="footer-center">
+                <img src="img/footer.png" alt="Cookies" class="footer-cookies">
+            </div>
+            
+            <!-- Right Side - Location and Map -->
+            <div class="footer-right">
+                <div class="footer-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.5!2d-95.1!3d29.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDM2JzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                        width="200" 
+                        height="150" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="footer-address">
+                    <p>1601 E NASA Pkwy, Houston, TX 77058, EE. UU.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="user-session.js"></script>
+    <script src="carrito.js"></script>
+    <script>
+        // Script para el menú desplegable
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, inicializando menú...');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebarMenu = document.querySelector('.sidebar-menu');
+            const darkOverlay = document.querySelector('.dark-overlay');
+            const menuHamburger = document.querySelector('.menu-hamburger');
+
+            if (menuToggle && sidebarMenu && darkOverlay) {
+                menuToggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    sidebarMenu.classList.toggle('active');
+                    darkOverlay.classList.toggle('active');
+                });
+
+                if (menuHamburger) {
+                    menuHamburger.addEventListener('click', function() {
+                        menuToggle.classList.remove('active');
+                        sidebarMenu.classList.remove('active');
+                        darkOverlay.classList.remove('active');
+                    });
+                }
+
+                darkOverlay.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    sidebarMenu.classList.remove('active');
+                    darkOverlay.classList.remove('active');
+                });
+
+                document.addEventListener('click', function(event) {
+                    if (!menuToggle.contains(event.target) && !sidebarMenu.contains(event.target)) {
+                        menuToggle.classList.remove('active');
+                        sidebarMenu.classList.remove('active');
+                        darkOverlay.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Debug: Verificar que los elementos existen
+            console.log('Elementos del carrito:');
+            console.log('- cartItems:', document.getElementById('cartItems'));
+            console.log('- subtotal:', document.getElementById('subtotal'));
+            console.log('- shipping:', document.getElementById('shipping'));
+            console.log('- total:', document.getElementById('total'));
+            console.log('- checkoutBtn:', document.getElementById('checkoutBtn'));
+        });
+    </script>
+</body>
+</html>

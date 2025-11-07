@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza la tuya - Brunela</title>
+    <link rel="icon" type="image/png" href="img/brunela.png">
+    <link rel="stylesheet" href="Personalizada.css">
+    <link rel="stylesheet" href="user-session.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Three.js for 3D cookie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <!-- Video Background -->
+    <video class="video-background" autoplay muted loop>
+        <source src="video/xxxxxxxx.mp4" type="video/mp4">
+    </video>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="img/texto brunelacolor.png" alt="Brunela" class="logo-image">
+                    </a>
+                </div>
+                <div class="search-section">
+                    <div class="search-bar"></div>
+                    <img src="img/lupa.png" alt="Buscar" class="search-icon">
+                    <img src="img/carrito.png" alt="Carrito de Compras" class="cart-icon" onclick="window.location.href='carrito.html'" title="Ver carrito">
+                    <img src="img/is.png" alt="Iniciar Sesión" class="login-icon" onclick="window.location.href='Iniciar-Sesion.html'">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Overlay -->
+    <div class="dark-overlay" id="darkOverlay"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-content">
+            <div class="menu-header">
+                <div class="menu-hamburger">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="menu-divider"></div>
+            </div>
+
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='Nosotros.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">NOSOTROS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Menú.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">MENÚ</span>
+                </div>
+                <div class="menu-item active">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">PERSONALIZADA</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Otros-Productos.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">OTROS PRODUCTOS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Iniciar-Sesion.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">INICIAR SESIÓN</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='index.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">HOGAR</span>
+                </div>
+            </div>
+
+            <div class="menu-footer">
+                <img src="img/bnegra.png" alt="Brunela" class="menu-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="personalizada-container">
+            <!-- Left Side - 3D Cookie and Preview -->
+            <div class="cookie-section">
+                <div class="cookie-3d-container" id="cookie3D">
+                    <!-- Loading indicator -->
+                    <div class="loading-indicator" id="loadingIndicator">
+                        <div class="loading-spinner"></div>
+                        <p>Cargando modelo 3D...</p>
+                    </div>
+                    <!-- 3D Cookie will be rendered here -->
+                </div>
+                <div class="cookie-controls">
+                    <div class="controls-info">
+                        <p>🖱️ Arrastra para rotar • 🔍 Rueda para zoom • 🖱️ Click derecho para mover</p>
+                    </div>
+                    <div class="control-buttons">
+                        <button class="control-btn" id="rotateBtn">🔄 Auto Rotar</button>
+                        <button class="control-btn" id="zoomBtn">🔍 Reset Zoom</button>
+                        <button class="control-btn" id="resetBtn">↺ Reset Vista</button>
+                    </div>
+                </div>
+
+                <!-- Cookie Preview -->
+                <div class="cookie-preview">
+                    <h3>Vista previa de tu galleta:</h3>
+                    <div class="preview-container" id="cookiePreview">
+                        <div class="cookie-display" id="cookieDisplay">
+                            <!-- Cookie will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Text and Form -->
+            <div class="text-section">
+                <h1 class="main-title">Personaliza la tuya</h1>
+                
+                <div class="quote-bubble">
+                    <p>"Esta podría ser tu galleta, crea tu propio estilo, para que disfrutes de cada una de tus emociones en un pedacito de Brunela"</p>
+                </div>
+
+                <!-- Order Form -->
+                <div class="order-form">
+                    <h3>Personaliza tu pedido:</h3>
+                    
+                    <div class="form-group">
+                        <label>Forma de la galleta:</label>
+                        <select id="cookieShape">
+                            <option value="circle">Redonda</option>
+                            <option value="heart">Corazón</option>
+                            <option value="star">Estrella</option>
+                            <option value="square">Cuadrada</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Color de la masa:</label>
+                        <select id="doughColor">
+                            <option value="#D4AF37">Dorada</option>
+                            <option value="#8B4513">Chocolate</option>
+                            <option value="#F5DEB3">Vainilla</option>
+                            <option value="#FFB6C1">Rosa</option>
+                            <option value="#98FB98">Verde menta</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Toppings:</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="chocolate-chips"> Chispas de chocolate</label>
+                            <label><input type="checkbox" value="nuts"> Nueces</label>
+                            <label><input type="checkbox" value="sprinkles"> Chispitas de colores</label>
+                            <label><input type="checkbox" value="coconut"> Coco rallado</label>
+                        </div>
+                        <div class="toppings-quantity" id="toppingsQuantity" style="display: none;">
+                            <label>Cantidad de toppings:</label>
+                            <input type="range" id="toppingsSlider" min="1" max="20" value="10">
+                            <span id="toppingsValue">10</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Crema/Glaseado:</label>
+                        <select id="creamType">
+                            <option value="none">Sin crema</option>
+                            <option value="vanilla">Crema de vainilla</option>
+                            <option value="chocolate">Crema de chocolate</option>
+                            <option value="strawberry">Crema de fresa</option>
+                            <option value="caramel">Crema de caramelo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Relleno:</label>
+                        <select id="fillingType">
+                            <option value="none">Sin relleno</option>
+                            <option value="chocolate">Relleno de chocolate</option>
+                            <option value="jam">Mermelada</option>
+                            <option value="cream">Crema pastelera</option>
+                            <option value="nutella">Nutella</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sabor principal:</label>
+                        <select id="mainFlavor">
+                            <option value="vanilla">Vainilla</option>
+                            <option value="chocolate">Chocolate</option>
+                            <option value="strawberry">Fresa</option>
+                            <option value="lemon">Limón</option>
+                            <option value="cinnamon">Canela</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de masa:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gluten" value="with-gluten" checked> Con gluten</label>
+                            <label><input type="radio" name="gluten" value="gluten-free"> Sin gluten</label>
+                        </div>
+                    </div>
+
+                    <button class="order-btn" id="orderBtn" onclick="addPersonalizedToCart()">¡Agregar al Carrito!</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Left Side - Brand and Social -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/bnegra.png" alt="Brunela Logo" class="logo-b">
+                </div>
+
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/wha.png" alt="WhatsApp"></a>
+                    <a href="#" class="social-icon"><img src="img/tik.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="img/pin.png" alt="Pinterest"></a>
+                </div>
+
+                <div class="footer-email">
+                    <p>brunela@cookie.co</p>
+                </div>
+            </div>
+
+            <!-- Center - Cookies -->
+            <div class="footer-center">
+                <img src="img/footer.png" alt="Cookies" class="footer-cookies">
+            </div>
+
+            <!-- Right Side - Location and Map -->
+            <div class="footer-right">
+                <div class="footer-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.5!2d-95.1!3d29.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDM2JzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                        width="200"
+                        height="150"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <div class="footer-address">
+                    <p>1601 E NASA Pkwy, Houston, TX 77058, EE. UU.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="user-session.js"></script>
+    <script src="Personalizada.js"></script>
+</body>
+</html>

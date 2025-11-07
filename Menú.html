@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - Brunela</title>
+    <link rel="icon" type="image/png" href="img/brunela.png">
+    <link rel="stylesheet" href="Menú.css">
+    <link rel="stylesheet" href="user-session.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos críticos para botones de carrito en cartas */
+        .price-cart-container {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 15px !important;
+            margin-top: 15px !important;
+        }
+        
+        .card-price {
+            font-size: 1.8rem !important;
+            font-weight: 700 !important;
+            color: #7d1b26 !important;
+            margin: 0 !important;
+        }
+        
+        .add-to-cart-btn {
+            position: static !important;
+            width: 35px !important;
+            height: 35px !important;
+            background: #7d1b26 !important;
+            border: none !important;
+            border-radius: 50% !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+            opacity: 1 !important;
+            transform: scale(1) !important;
+            z-index: 10 !important;
+            box-shadow: 0 3px 10px rgba(125, 27, 38, 0.4) !important;
+        }
+        
+        .add-to-cart-btn img {
+            width: 18px !important;
+            height: 18px !important;
+            filter: brightness(0) invert(1) !important;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #5a1419 !important;
+            transform: scale(1.1) !important;
+            box-shadow: 0 6px 20px rgba(125, 27, 38, 0.6) !important;
+        }
+        
+        .card-image {
+            position: relative !important;
+        }
+        
+        /* Estilos para iconos de navbar */
+        .search-icon, .cart-icon, .login-icon {
+            width: 30px !important;
+            height: 30px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            opacity: 0.8 !important;
+        }
+        
+        .search-icon:hover, .cart-icon:hover, .login-icon:hover {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="img/texto brunelacolor.png" alt="Brunela" class="logo-image">
+                    </a>
+                </div>
+                <div class="search-section">
+                    <div class="search-bar"></div>
+                    <img src="img/lupa.png" alt="Buscar" class="search-icon">
+                    <img src="img/carrito.png" alt="Carrito de Compras" class="cart-icon" onclick="window.location.href='carrito.html'" title="Ver carrito">
+                    <img src="img/is.png" alt="Iniciar Sesión" class="login-icon" onclick="window.location.href='Iniciar-Sesion.html'">
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Overlay -->
+    <div class="dark-overlay" id="darkOverlay"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-content">
+            <div class="menu-header">
+                <div class="menu-hamburger">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="menu-divider"></div>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='Nosotros.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">NOSOTROS</span>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">MENÚ</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Personalizada.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">PERSONALIZADA</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Otros-Productos.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">OTROS PRODUCTOS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Iniciar-Sesion.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">INICIAR SESIÓN</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='index.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">HOGAR</span>
+                </div>
+            </div>
+            
+            <div class="menu-footer">
+                <img src="img/bnegra.png" alt="Brunela" class="menu-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Carrusel Automático -->
+    <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+                <img src="img/Carrusel/1.jpg" alt="Galleta 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/2.jpg" alt="Galleta 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/3.jpg" alt="Galleta 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/4.jpg" alt="Galleta 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/5.jpg" alt="Galleta 5">
+            </div>
+            <!-- Duplicar slides para efecto infinito -->
+            <div class="carousel-slide">
+                <img src="img/Carrusel/1.jpg" alt="Galleta 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/2.jpg" alt="Galleta 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/3.jpg" alt="Galleta 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/4.jpg" alt="Galleta 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="img/Carrusel/5.jpg" alt="Galleta 5">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Section -->
+    <section class="main-content-section">
+        <div class="content-container">
+            <!-- Left Side - Filter Button -->
+            <div class="left-sidebar">
+                <button class="filter-button" id="filterButton">
+                    <img src="img/filtro.png" alt="Filtro" class="filter-icon-image">
+                </button>
+                
+                <!-- Filter Panel -->
+                <div class="filter-panel" id="filterPanel">
+                    <div class="filter-header">
+                        <h3>Filtros</h3>
+                        <button class="close-filter" id="closeFilter">×</button>
+                    </div>
+                    
+                    <!-- Price Range Section -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">Rango de Precios</h4>
+                        <div class="price-range">
+                            <div class="price-input">
+                                <label>Precio Mínimo</label>
+                                <input type="number" id="minPrice" placeholder="1000" min="0" step="100">
+                            </div>
+                            <div class="price-input">
+                                <label>Precio Máximo</label>
+                                <input type="number" id="maxPrice" placeholder="5000" min="0" step="100">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Tags -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">Categorías</h4>
+                        <div class="filter-tags">
+                            <button class="filter-tag" data-filter="especiales">Especiales</button>
+                            <button class="filter-tag" data-filter="semanal">Semanal</button>
+                            <button class="filter-tag" data-filter="chocolate">Chocolate</button>
+                            <button class="filter-tag" data-filter="nuevas">Nuevas</button>
+                            <button class="filter-tag" data-filter="vegano">Vegano</button>
+                            <button class="filter-tag" data-filter="sin-gluten">Sin Gluten</button>
+                            <button class="filter-tag" data-filter="premium">Premium</button>
+                            <button class="filter-tag" data-filter="tradicional">Tradicional</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Flavor Tags -->
+                    <div class="filter-section">
+                        <h4 class="filter-section-title">Sabores</h4>
+                        <div class="filter-tags">
+                            <button class="filter-tag" data-filter="vainilla">Vainilla</button>
+                            <button class="filter-tag" data-filter="chocolate-chip">Chocolate Chip</button>
+                            <button class="filter-tag" data-filter="fresa">Fresa</button>
+                            <button class="filter-tag" data-filter="limon">Limón</button>
+                            <button class="filter-tag" data-filter="canela">Canela</button>
+                            <button class="filter-tag" data-filter="nuez">Nuez</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Filter Actions -->
+                    <div class="filter-actions">
+                        <button class="apply-filters-btn" id="applyFilters">Aplicar Filtros</button>
+                        <button class="clear-filters-btn" id="clearFilters">Limpiar Todo</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Side - Product Cards -->
+            <div class="products-grid">
+                <!-- Card 1 -->
+                <div class="product-card" data-price="2500" data-categories="nuevas chocolate chocolate-chip" data-flavors="chocolate-chip chocolate">
+                    <div class="card-badge card-badge-new">Nuevo</div>
+                    <div class="card-image">
+                        <img src="img/sabor1.png" alt="Sabor 1" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 1</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$2.500</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor1',
+                                name: 'Sabor 1',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 2500,
+                                image: 'img/sabor1.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="product-card" data-price="1800" data-categories="semanal chocolate tradicional" data-flavors="canela chocolate">
+                    <div class="card-badge card-badge-weekly">Semanal</div>
+                    <div class="card-image">
+                        <img src="img/sabor2.png" alt="Sabor 2" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 2</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$1.800</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor2',
+                                name: 'Sabor 2',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 1800,
+                                image: 'img/sabor2.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="product-card" data-price="3200" data-categories="especiales premium chocolate-chip" data-flavors="vainilla chocolate-chip nuez">
+                    <div class="card-badge card-badge-special">Especial</div>
+                    <div class="card-image">
+                        <img src="img/sabor3.png" alt="Sabor 3" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 3</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$3.200</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor3',
+                                name: 'Sabor 3',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 3200,
+                                image: 'img/sabor3.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="product-card" data-price="2700" data-categories="nuevas sin-gluten premium" data-flavors="fresa vainilla">
+                    <div class="card-badge card-badge-new">Nuevo</div>
+                    <div class="card-image">
+                        <img src="img/sabor4.png" alt="Sabor 4" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 4</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$2.700</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor4',
+                                name: 'Sabor 4',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 2700,
+                                image: 'img/sabor4.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="product-card" data-price="2000" data-categories="semanal chocolate tradicional" data-flavors="vainilla chocolate">
+                    <div class="card-badge card-badge-weekly">Semanal</div>
+                    <div class="card-image">
+                        <img src="img/sabor5.png" alt="Sabor 5" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 5</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$2.000</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor5',
+                                name: 'Sabor 5',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 2000,
+                                image: 'img/sabor5.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="product-card" data-price="3600" data-categories="especiales premium chocolate-chip" data-flavors="chocolate chocolate-chip nuez">
+                    <div class="card-badge card-badge-special">Especial</div>
+                    <div class="card-image">
+                        <img src="img/sabor6.png" alt="Sabor 6" class="cookie-image">
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 6</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                        <div class="price-cart-container">
+                            <div class="card-price">$3.600</div>
+                            <button class="add-to-cart-btn" onclick="addToCart({
+                                id: 'sabor6',
+                                name: 'Sabor 6',
+                                description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                                price: 3600,
+                                image: 'img/sabor6.png',
+                                category: 'galletas'
+                            })">
+                                <img src="img/carrito.png" alt="Agregar al carrito">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 7 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor1.png" alt="Sabor 7" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor7',
+                            name: 'Sabor 7',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 2500,
+                            image: 'img/sabor1.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 7</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 8 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor2.png" alt="Sabor 8" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor8',
+                            name: 'Sabor 8',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 1800,
+                            image: 'img/sabor2.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 8</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 9 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor3.png" alt="Sabor 9" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor9',
+                            name: 'Sabor 9',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 3200,
+                            image: 'img/sabor3.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 9</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 10 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor4.png" alt="Sabor 10" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor10',
+                            name: 'Sabor 10',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 2700,
+                            image: 'img/sabor4.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 10</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 11 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor5.png" alt="Sabor 11" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor11',
+                            name: 'Sabor 11',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 2000,
+                            image: 'img/sabor5.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 11</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 12 -->
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="img/sabor6.png" alt="Sabor 12" class="cookie-image">
+                        <button class="add-to-cart-btn" onclick="addToCart({
+                            id: 'sabor12',
+                            name: 'Sabor 12',
+                            description: 'Galleta simple normal salida del experimento J que contiene pan integral horneado.',
+                            price: 3600,
+                            image: 'img/sabor6.png',
+                            category: 'galletas'
+                        })">
+                            <img src="img/carrito.png" alt="Agregar al carrito">
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Sabor 12</h3>
+                        <p class="card-description">Galleta simple normal salida del experimento J que contiene pan integral horneado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Left Side - Brand and Social -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/bnegra.png" alt="Brunela Logo" class="logo-b">
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+                    <a href="#" class="social-icon"><img src="img/face.png" alt="Facebook"></a>
+                    <a href="#" class="social-icon"><img src="img/wha.png" alt="WhatsApp"></a>
+                    <a href="#" class="social-icon"><img src="img/tik.png" alt="TikTok"></a>
+                    <a href="#" class="social-icon"><img src="img/pin.png" alt="Pinterest"></a>
+                </div>
+                
+                <div class="footer-email">
+                    <p>brunela@cookie.co</p>
+                </div>
+            </div>
+            
+            <!-- Center - Cookies -->
+            <div class="footer-center">
+                <img src="img/footer.png" alt="Cookies" class="footer-cookies">
+            </div>
+            
+            <!-- Right Side - Location and Map -->
+            <div class="footer-right">
+                <div class="footer-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.5!2d-95.1!3d29.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDM2JzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                        width="200" 
+                        height="150" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                
+                <div class="footer-address">
+                    <p>1601 E NASA Pkwy, Houston, TX 77058, EE. UU.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="user-session.js"></script>
+    <script src="Menú.js"></script>
+    <script>
+        // Función para agregar productos al carrito
+        function addToCart(product) {
+            const currentUser = localStorage.getItem('currentUser') || 'guest';
+            const cartKey = `cart_${currentUser}`;
+            const existingCart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+            
+            const existingItem = existingCart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                existingCart.push({
+                    ...product,
+                    quantity: 1,
+                    addedAt: new Date().toISOString()
+                });
+            }
+            
+            localStorage.setItem(cartKey, JSON.stringify(existingCart));
+            
+            // Mostrar notificación
+            showNotification('Producto agregado al carrito');
+            
+            // Actualizar contador del carrito en navbar
+            updateCartCount();
+        }
+        
+        // Función para mostrar notificación
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #d4af37;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.3s ease-out reverse';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+        
+        // Función para actualizar contador del carrito
+        function updateCartCount() {
+            const currentUser = localStorage.getItem('currentUser') || 'guest';
+            const cartKey = `cart_${currentUser}`;
+            const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            // Actualizar contador en navbar si existe
+            const cartCountElement = document.getElementById('cartCount');
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+                cartCountElement.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+        }
+        
+        // Actualizar contador al cargar la página
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+</html>
+

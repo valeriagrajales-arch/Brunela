@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brunela - Galletas Artesanales</title>
+    <link rel="icon" type="image/png" href="img/brunela.png">
+    <link rel="stylesheet" href="Home.css?v=2">
+    <link rel="stylesheet" href="user-session.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos críticos para iconos - Forzar aplicación */
+        .search-icon, .cart-icon, .login-icon {
+            width: 30px !important;
+            height: 30px !important;
+            max-width: 30px !important;
+            max-height: 30px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            opacity: 0.8 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            color: #333 !important;
+        }
+        
+        .search-icon:hover, .cart-icon:hover, .login-icon:hover {
+            opacity: 1 !important;
+            transform: scale(1.1) !important;
+            color: #d4af37 !important;
+        }
+        
+        .cart-count {
+            position: absolute !important;
+            top: -8px !important;
+            right: -8px !important;
+            background: #ff4757 !important;
+            color: white !important;
+            border-radius: 50% !important;
+            width: 18px !important;
+            height: 18px !important;
+            font-size: 12px !important;
+            font-weight: bold !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 18px !important;
+        }
+        
+        .search-section {
+            display: flex !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+        
+        .navbar {
+            background: rgba(237, 204, 178, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 100 !important;
+            height: 80px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .nav {
+            display: grid !important;
+            grid-template-columns: 1fr auto 1fr auto 1fr !important;
+            align-items: center !important;
+            width: 100% !important;
+            max-width: 1400px !important;
+            gap: 60px !important;
+        }
+        
+        .logo-image {
+            height: 120px !important;
+            width: auto !important;
+        }
+        
+        /* Reset para asegurar que no haya estilos conflictivos */
+        * {
+            box-sizing: border-box !important;
+        }
+        
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <img src="img/brunela.png" alt="Brunela" class="loading-logo">
+        </div>
+    </div>
+
+    <!-- Video Background -->
+    <video class="video-background" autoplay muted loop playsinline>
+        <source src="video/0917.mp4" type="video/mp4">
+    </video>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="navbar">
+            <nav class="nav">
+                <div class="menu-toggle">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="img/texto brunela.png" alt="Brunela" class="logo-image">
+                    </a>
+                </div>
+                <div class="search-section">
+                    <div class="search-bar"></div>
+                    <div class="search-icon" title="Buscar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </div>
+                    <div class="cart-icon" onclick="window.location.href='carrito.html'" title="Ver carrito">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="m1 1 4 4 13 1-4 8H6"></path>
+                        </svg>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="login-icon" onclick="window.location.href='Iniciar-Sesion.html'" title="Iniciar Sesión">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dark Overlay -->
+    <div class="dark-overlay" id="darkOverlay"></div>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-content">
+            <div class="menu-header">
+                <div class="menu-hamburger">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </div>
+                <div class="menu-divider"></div>
+            </div>
+            
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='Nosotros.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">NOSOTROS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Menú.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">MENÚ</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Personalizada.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">PERSONALIZADA</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Otros-Productos.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">OTROS PRODUCTOS</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='Iniciar-Sesion.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">INICIAR SESIÓN</span>
+                </div>
+                <div class="menu-item" onclick="window.location.href='index.html'">
+                    <span class="menu-arrow">→</span>
+                    <span class="menu-text-item">HOGAR</span>
+                </div>
+            </div>
+            
+            <div class="menu-footer">
+                <img src="img/brunela blnco.png" alt="Brunela" class="menu-logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Content area - cookies removed -->
+    </main>
+
+    <!-- Call to Action -->
+    <div class="cta-section">
+        <button class="order-button" onclick="window.location.href='Personalizada.html'">
+            <span>Construye la tuya</span>
+        </button>
+    </div>
+
+    <!-- Content Section with normal background -->
+    <section class="content-section">
+        <div class="week-banner">
+            <span>Semana de Septiembre 15 - 20</span>
+        </div>
+        
+        <div class="flavors-title">
+            <h1>SABORES</h1>
+            <h1>SEMANALES</h1>
+        </div>
+        
+                <div class="cookie-promo-container">
+                    <div class="cookie-info-box">
+                        <div class="cookie-image-section">
+                            <img src="img/sabor1.png" alt="Galleta de Chocolate" class="main-cookie-image">
+                        </div>
+                        
+                        <div class="cookie-text-content">
+                            <h2 class="cookie-name">GALLETA 1 JXS</h2>
+                            <h2 class="cookie-subtitle">CHOCOLATE COOKIE</h2>
+                            
+                            <p class="cookie-description">
+                                Una galleta deliciosa salida de un experimento llamado JXS con chocolate.
+                            </p>
+                            
+                            <div class="action-buttons">
+                                <button class="read-more-btn">Leer mas</button>
+                                <button class="order-now-btn">Ordenar Ya</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="cookie-promo-container cookie-promo-2">
+                    <div class="cookie-info-box">
+                        <div class="cookie-image-section">
+                            <img src="img/sabor2.png" alt="Galleta Cinnamon Roll" class="main-cookie-image">
+                        </div>
+                        
+                        <div class="cookie-text-content">
+                            <h2 class="cookie-name">GALLETA 2 JS</h2>
+                            <h2 class="cookie-subtitle">CINNAMON ROLL</h2>
+                            
+                            <p class="cookie-description">
+                                Una galleta deliciosa salida de un experimento llamado JS al estilo Cinnamon Roll.
+                            </p>
+                            
+                            <div class="action-buttons">
+                                <button class="read-more-btn">Leer mas</button>
+                                <button class="order-now-btn">Ordenar Ya</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </section>
+
+</main>
+
+    <!-- Footer -->
+    <footer class="footer">
+    <div class="footer-content">
+        <!-- Left Side - Brand and Social -->
+        <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="img/b.png" alt="Brunela Logo" class="logo-b">
+                </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon"><img src="img/ig.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="img/face.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="img/wha.png" alt="WhatsApp"></a>
+                <a href="#" class="social-icon"><img src="img/tik.png" alt="TikTok"></a>
+                <a href="#" class="social-icon"><img src="img/pin.png" alt="Pinterest"></a>
+            </div>
+            
+            <div class="footer-email">
+                <p>brunela@cookie.co</p>
+            </div>
+        </div>
+        
+        <!-- Center - Cookies -->
+        <div class="footer-center">
+            <img src="img/footer.png" alt="Cookies" class="footer-cookies">
+        </div>
+        
+        <!-- Right Side - Location and Map -->
+        <div class="footer-right">
+            <div class="footer-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.5!2d-95.1!3d29.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDM2JzAwLjAiTiA5NcKwMDYnMDAuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                    width="200" 
+                    height="150" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+            <div class="footer-address">
+                <p>1601 E NASA Pkwy, Houston, TX 77058, EE. UU.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="user-session.js"></script>
+    <script src="home.js"></script>
+    <script>
+        // Script para actualizar contador del carrito
+        function updateCartCount() {
+            const currentUser = localStorage.getItem('currentUser') || 'guest';
+            const cartKey = `cart_${currentUser}`;
+            const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            const cartCountElement = document.getElementById('cartCount');
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+                cartCountElement.style.display = totalItems > 0 ? 'flex' : 'none';
+            }
+        }
+        
+        // Actualizar contador al cargar la página
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+        
+        // Escuchar cambios en localStorage
+        window.addEventListener('storage', updateCartCount);
+    </script>
+</body>
+</html>
